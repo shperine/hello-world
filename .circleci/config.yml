@@ -31,6 +31,6 @@ workflows:
       - print_world:
           requires:
             - print_hello
-      - print_my_name:
+      - print_also_my_name:
             requires:
               - print_world
