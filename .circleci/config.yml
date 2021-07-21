@@ -10,16 +10,17 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      run: echo "hello"
+      run: echo hello
   print_world:
-    requires: print_hello
     docker:
       - image: circleci/node:13.8.0
     steps:
-      run: echo "world"
+      run: echo world
 workflows:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - welcome/run
+      - print_hello
+      - print_world
+        requires: print_hello
