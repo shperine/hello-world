@@ -61,9 +61,9 @@ jobs:
     steps:
       - run: return 1
       - run:
-        name: Failure Response
-        command: echo THERE HAS BEEN A FAILURE
-        when: on_fail
+          name: Failure Response
+          command: echo THERE HAS BEEN A FAILURE
+          when: on_fail
 
 
 
