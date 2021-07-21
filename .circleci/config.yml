@@ -55,14 +55,26 @@ jobs:
       - print_pipeline_id:
           id: << pipeline.id >>
 
+  job_that_fails:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: return 1
+      - run:
+        name: Failure Response
+        command: echo THERE HAS BEEN A FAILURE
+        when: on_fail
+
+
 
 workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
+  # Name the workflow "my_workflow"
+  my_workflow:
+    # Run the my_workflow job in its own container
     jobs:
       # - save_hello_world_output
       # - print_output_file:
       #     requires:
       #       - save_hello_world_output
-      - command_tester
+      - job_that_fails
+      
