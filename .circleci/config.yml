@@ -37,7 +37,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - attach_workspace:
-        at: /tmp/dir
+          at: /tmp/dir
       - run: cat output.txt
 
 workflows:
@@ -45,7 +45,6 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - welcome/run
       - save_hello_world_output
       - print_output_file
           requires:
